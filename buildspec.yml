@@ -1,0 +1,28 @@
+version: 0.2
+
+phases:
+    install:
+        runtime-versions:
+            nodejs: 12
+        commands:
+            echo Install phase...
+    pre_build:
+        commands:
+            # Install node dependencies
+            - echo Installing node dependencies...
+            - npm install
+    build:
+        commands:
+            # Install client dependencies and build static files
+            - echo Building React static files. Started on 'date'
+            - npm install --prefix client && npm run build --prefix client
+    post_build:
+        commands:
+            # Display files
+            - ls -la
+            - ls client -la
+            - echo Build finished on 'date'.
+
+artifacts:
+    files:
+        - '**/*'

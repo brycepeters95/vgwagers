@@ -1,0 +1,118 @@
+mongodb- no sql uses documents(json synatax) pairs well with node
+atlas- easier to manage dont have to set up local db, cant install a local instance of mongo to deploy with heroku
+
+dependicies
+express- web framework for backend
+express-validator- data validation
+bcryptjs- password encryption
+config- global var( can use global values we can use throughout are application like mongouroi or jwt)
+gravatar- avatar for email
+jsonwebtoken- passing along a token for validaton
+mongoose- layer that sits ontop of db where we can interact with
+request- make http request to another api( paypal)
+
+dev depencies
+nodemon- constanly watches servers so we dont have to refresh after each change
+concurrently- run backend node server with frontend react server at the same time
+
+
+server.js
+different scripts will run different servers 
+
+db.js- could be in server.js but would cause clutter
+
+const db = config.get('mongoURI') get any value in config folder
+
+anytime using async await most likely will be wrapping around a try catch
+
+auth.js handling jwt token
+user.js handling login register
+profile.js- have anything to do with fetching looking up profiles
+
+express router- routes in seperate files, you can put routes in server.js but large project could get messy
+
+public or private- if u need token to access certain route too add profile u need to be authenicated so u send along a 
+token to that route in order to work or else you will get unauthorized access
+
+create model create schema specific resource we want each model to have
+
+req.body- object of data sent to that route, in order to work will need init middleware(bodyparser) but now include with express
+
+-return jsonwebtoken because in frontend when the user register i want them logged in right away in order to be
+logged in need that route users.js line82
+can use that token to authenicate and access protected routes
+jwt token- broken up in 3 parts, type, payload(data in token), signature
+send as payload user.id identify what user it is with the token(update profile look at payload to see which user logged in)
+
+-react app constanly make req with token to see if authenicated where than we will fill our redux state which will have 
+user object that has all the main info in it(id,name,email,avatar,date) so we know which user is logged in at all time
+
+stopped at part 14
+
+<<<<<<< HEAD
+1.  CREATE bank component(static cashbalnce, static transaction, but links for bankactions)
+2. addFunds(bankforms) create component
+3. setting up actions for add funds to redirect paypal
+4. saving to bank model for user
+
+use inline for transaction css
+=======
+-make backend route that save transaction
+-in react on success after backend call check if total in cash balance is empty if so replace if its not add to it
+-send a trasanction report to front end(might not need to grab info from backend.. probaly will when having payout)
+
+use inline for transaction css
+
+
+
+
+getcurrentwager 
+figure out why error "res is undefined"
+fact checking array to see if equal to 0 then send back null
+
+today
+-add funds page and withdrawl page
+-make landing page mobile
+-design something for previous wager if they have a disputed wager form waiting 
+
+tommorow
+- verify message when they try to add funds verify email first
+-web hooks add funds
+-change flat fee to variable fee for wagers
+-footer
+-social links
+
+<<<<<<< HEAD
+>>>>>>> payout
+=======
+---little
+-change font
+--mobile table for transaction
+-date of birth
+-18 years or older
+-terms of service
+-top earners page
+-in wager instead for loop and set on sumbit set it up for add to teamm
+
+
+
+-recheck accept,cancel,won,and lost routes
+-setting up public team wagers
+-adding ui features if select bigger than 1v1 add players to team
+-fix paypal not adding funds maybe
+-recheck everything 
+-fix landing page, footer, messaging system push
+-messaging system
+-test eveything
+  the model decision for home and away array of object each object contain id username 
+- when user decline wager show decline for all users in wager
+
+
+wager.api
+-check for duplicate user when creating home and away team and in the creation of the public wager
+
+-show team wager in all public wager
+-refresh page after acceptig wager
+>>>>>>> origin/chat
+
+set up for if notification is read
